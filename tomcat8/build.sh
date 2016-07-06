@@ -11,7 +11,7 @@ CONTEXT_PATH=$(cd $(dirname ${0}); pwd)
 
 source ${CONTEXT_PATH}/../common/env.sh
 
-IMAGE_VERSION="1.0"
+IMAGE_VERSION="1.0.0"
 IMAGE_NAME="tomcat8"
 
 TOMCAT_PKG="apache-tomcat-8.0.35.tar.gz"
