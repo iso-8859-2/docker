@@ -9,7 +9,9 @@ FROM euler-registry.primeton.com/jdk8:1.0.0
 
 MAINTAINER www.primeton.com, euler@primeton.com
 
-RUN mkdir -p /opt/programs
+# Use aliyum apt source
+ADD ./resources/sources.list /etc/apt/
+
 RUN apt-get update && apt-get install -y git curl zip unzip wget expect tar ftp
 
 # install docker

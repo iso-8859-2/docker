@@ -11,6 +11,9 @@ CONTEXT_PATH=$(cd $(dirname ${0}); pwd)
 
 source ${CONTEXT_PATH}/../common/env.sh
 
+IMAGE_VERSION="1.0.0"
+IMAGE_NAME="jenkins"
+
 NODEJS_FILE="node-v6.2.0-linux-x64.tar.gz"
 JENKINS_FILE="jenkins.war"
 MAVEN_FILE="apache-maven-3.3.9-bin.tar.gz"
