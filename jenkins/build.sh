@@ -21,7 +21,7 @@ MAVEN_FILE="apache-maven-3.3.9-bin.tar.gz"
 main() {
     if [ ! -f "${CONTEXT_PATH}/resources/${MAVEN_FILE}" ] ; then
         curl --fail --location --retry 3 \
-        http://apache.opencas.org/maven/maven-3/3.3.9/binaries/${MAVEN_FILE} -o ${CONTEXT_PATH}/resources/${MAVEN_FILE}
+        http://mirrors.hust.edu.cn/apache/maven/maven-3/3.3.9/binaries/${MAVEN_FILE} -o ${CONTEXT_PATH}/resources/${MAVEN_FILE}
     fi
     if [ ! -f "${CONTEXT_PATH}/resources/${NODEJS_FILE}" ] ; then
         curl --fail --location --retry 3 \
