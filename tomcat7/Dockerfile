@@ -5,14 +5,14 @@
 # author: ZhongWen Li (mailto:lizw@primeton.com)
 #
 
-FROM euler-registry.primeton.com/jdk8:1.0.0
-# FROM jdk8:1.0.0
+FROM euler-registry.primeton.com/jdk7:1.0.0
+# FROM jdk7:1.0.0
 
 MAINTAINER www.primeton.com, registry@primeton.com
 
-ENV TOMCAT_HOME=/opt/programs/apache-tomcat-8.0.35
+ENV TOMCAT_HOME=/opt/programs/apache-tomcat-7.0.70
 
-ADD ./resources/apache-tomcat-8.0.35.tar.gz /opt/programs/
+ADD ./resources/apache-tomcat-7.0.70.tar.gz /opt/programs/
 ADD ./resources/entrypoint.sh ${TOMCAT_HOME}/bin
 
 RUN chmod +x ${TOMCAT_HOME}/bin/entrypoint.sh && rm -rf ${TOMCAT_HOME}/webapps/* && mkdir ${TOMCAT_HOME}/webapps/ROOT && ln -sf ${TOMCAT_HOME}/webapps/ROOT /opt/application

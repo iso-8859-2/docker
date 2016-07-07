@@ -35,14 +35,16 @@ fi
 
 PARAMS="--REGISTRY_URL ${REGISTRY_URL} --PUSH_IMG ${PUSH_IMG} --RM_IMG ${RM_IMG} --LATEST ${LATEST}"
 
-# /bin/bash ${CONTEXT_PATH}/jre7/build.sh ${PARAMS}
+/bin/bash ${CONTEXT_PATH}/jre7/build.sh ${PARAMS}
 
-# /bin/bash ${CONTEXT_PATH}/jdk7/build.sh ${PARAMS}
+/bin/bash ${CONTEXT_PATH}/jdk7/build.sh ${PARAMS}
 
-# /bin/bash ${CONTEXT_PATH}/jre8/build.sh ${PARAMS}
+/bin/bash ${CONTEXT_PATH}/jre8/build.sh ${PARAMS}
 
 /bin/bash ${CONTEXT_PATH}/jdk8/build.sh ${PARAMS}
 
 /bin/bash ${CONTEXT_PATH}/jenkins/build.sh ${PARAMS}
 
-# /bin/bash ${CONTEXT_PATH}/tomcat8/build.sh ${PARAMS}
+/bin/bash ${CONTEXT_PATH}/tomcat7/build.sh ${PARAMS}
+
+/bin/bash ${CONTEXT_PATH}/tomcat8/build.sh ${PARAMS}
