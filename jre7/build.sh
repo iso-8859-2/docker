@@ -12,7 +12,7 @@ CONTEXT_PATH=$(cd $(dirname ${0}); pwd)
 source ${CONTEXT_PATH}/../common/env.sh
 
 IMAGE_VERSION="1.0.0"
-IMAGE_NAME="jre8"
+IMAGE_NAME="jre7"
 
 JAVA_VERSION_MAJOR=7
 JAVA_VERSION_MINOR=80
