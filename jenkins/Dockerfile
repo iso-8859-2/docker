@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y git curl zip unzip wget expect tar ftp 
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
 
+RUN echo "DOCKER_OPTS=\"--insecure-registry euler-registry.primeton.com\"" >> /etc/default/docker
+
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
 # RUN apt-get install -y apt-transport-https ca-certificates
 # RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
