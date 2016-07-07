@@ -93,6 +93,8 @@ popd >/dev/null
 # delete it so that docker can start.
 rm -rf /var/run/docker.pid
 
+DOCKER_DAEMON_ARGS="${DOCKER_DAEMON_ARGS} --insecure-registry euler-registry.primeton.com"
+
 # If we were given a PORT environment variable, start as a simple daemon;
 # otherwise, spawn a shell as well
 if [ "$PORT" ]
