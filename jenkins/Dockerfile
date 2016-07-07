@@ -5,8 +5,8 @@
 # author: ZhongWen Li (mailto:lizw@primeton.com)
 #
 
-# FROM euler-registry.primeton.com/jdk8:1.0.0
-FROM jdk8:1.0.0
+FROM euler-registry.primeton.com/jdk8:1.0.0
+# FROM jdk8:1.0.0
 
 MAINTAINER www.primeton.com, euler@primeton.com
 
