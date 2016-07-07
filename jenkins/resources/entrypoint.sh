@@ -24,6 +24,10 @@ if [ ! -f ${JENKINS_WAR} ]; then
     exit 0
 fi
 
+# run docker daemon
+nohup wrapdocker >> /dev/null &
+
 CMD="${JAVA_HOME}/bin/java -server ${JAVA_OPTS} -jar ${JENKINS_WAR}"
 echo ${CMD}
 ${CMD}
+

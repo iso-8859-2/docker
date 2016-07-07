@@ -13,9 +13,11 @@ MAINTAINER www.primeton.com, euler@primeton.com
 # Ubuntu apt source
 ADD ./resources/sources.list /etc/apt/
 
-RUN apt-get update && apt-get install -y git curl zip unzip wget expect tar ftp iputils-ping
+RUN apt-get update && apt-get install -y git curl zip unzip wget expect tar ftp iputils-ping apt-transport-https ca-certificates lxc iptables dmsetup
 
-# install docker
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ | sh
+
 # https://docs.docker.com/engine/installation/linux/ubuntulinux/
 # RUN apt-get install -y apt-transport-https ca-certificates
 # RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -37,6 +39,9 @@ ENV PATH=${PATH}:${MAVEN_HOME}/bin:${NODE_HOME}/bin
 # can be persisted and survive image upgrades
 VOLUME ${JENKINS_HOME}
 
+# Define additional metadata for our image.
+VOLUME /var/lib/docker
+
 # 8080 for main web interface, 50000 will be used by attached slave agents
 EXPOSE 8080 50000
 
@@ -48,7 +53,8 @@ ADD ./resources/node-v6.2.0-linux-x64.tar.gz ${PROGRAMS_HOME}/
 ADD ./resources/jenkins.war ${PROGRAMS_HOME}/jenkins/
 ADD ./resources/entrypoint.sh ${PROGRAMS_HOME}/jenkins/
 ADD ./resources/euler-ci-autoconfig.jar ${PROGRAMS_HOME}/autoconfig/
+ADD ./resources/wrapdocker /usr/local/bin/wrapdocker
 
-RUN chmod u+x ${PROGRAMS_HOME}/jenkins/entrypoint.sh
+RUN chmod u+x /usr/local/bin/wrapdocker && chmod u+x ${PROGRAMS_HOME}/jenkins/entrypoint.sh
 
 ENTRYPOINT ["/bin/sh", "-c", "${PROGRAMS_HOME}/jenkins/entrypoint.sh"]
