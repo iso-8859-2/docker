@@ -30,6 +30,10 @@ You will probably want to make that a persistent volume (recommended):
   
   
 This will store the jenkins data in `/your/home` on the host.
-Ensure that `/your/home` is accessible by the jenkins user in container (jenkins user - root) or use `-u some_other_user` parameter with `docker run`.
+Ensure that `/your/home` is accessible by the jenkins user in container (jenkins user - root) or use `-u some_other_user` parameter with `docker run`.  
+  
+  
+`docker run --privileged --restart always -d -p 8080:8080 -p 50000:50000 -v /some/dir:/opt/workspaces/jenkins --add-host=euler-registry.primeton.com:10.15.15.172 -e JAVA_OPTS="-Xms1024m -Xmx2048m" euler-registry.primeton.com/jenkins:1.0.0`  
+  
   
   
