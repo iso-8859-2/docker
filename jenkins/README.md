@@ -21,12 +21,6 @@ This is a fully functional Jenkins server, based on the Long Term Support releas
 
 `docker run -p 8080:8080 -p 50000:50000 euler-registry.primeton.com/jenkins`  
   
-If you need docker environment,  
-  
-`docker run -v /var/run/docker.sock:/var/run/docker.sock ...`  
-  
-[https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)  
-  
 NOTE: read below the _build executors_ part for the role of the `50000` port mapping.
 
 This will store the workspace in /opt/jenkins_home. All Jenkins data lives in there - including plugins and configuration.
