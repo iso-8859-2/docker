@@ -15,6 +15,9 @@ ADD ./resources/sources.list /etc/apt/
 
 RUN apt-get update && apt-get install -y git curl zip unzip wget expect tar ftp iputils-ping apt-transport-https ca-certificates lxc iptables dmsetup
 
+# docker-in-docker
+# https://github.com/jpetazzo/dind
+
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
 
