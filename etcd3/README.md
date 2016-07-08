@@ -10,7 +10,9 @@
   
 [https://github.com/coreos/etcd/blob/release-2.3/Documentation/docker_guide.md](https://github.com/coreos/etcd/blob/release-2.3/Documentation/docker_guide.md)  
   
-[https://github.com/coreos/etcd/releases/tag/v2.3.7](https://github.com/coreos/etcd/releases/tag/v2.3.7)  
+[https://github.com/coreos/etcd/blob/v3.0.1/Documentation/v2/docker_guide.md](https://github.com/coreos/etcd/blob/v3.0.1/Documentation/v2/docker_guide.md)  
+  
+[https://github.com/coreos/etcd/releases/tag/v3.0.1](https://github.com/coreos/etcd/releases/tag/v3.0.1)  
   
 [https://quay.io/repository/coreos/etcd?tab=tags](https://quay.io/repository/coreos/etcd?tab=tags)  
   
