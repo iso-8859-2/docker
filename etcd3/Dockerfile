@@ -20,4 +20,8 @@ EXPOSE 12379 12380
 
 VOLUME /data
 
+# Run as etcd user
+# RUN groupadd -r etcd && useradd -r -g etcd etcd
+# USER etcd
+
 CMD ["/usr/bin/etcd", "--data-dir", "/data"]
