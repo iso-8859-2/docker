@@ -33,7 +33,7 @@ main() {
     # http://ftp.tsukuba.wide.ad.jp/software/jenkins/war/2.12/jenkins.war
     if [ ! -f "${CONTEXT_PATH}/resources/${JENKINS_FILE}" ] ; then
         curl --fail --location --retry 3 \
-            http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.12/${JENKINS_FILE} \
+            http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.13/jenkins.war \
             -o ${CONTEXT_PATH}/resources/${JENKINS_FILE}
     fi
 }
