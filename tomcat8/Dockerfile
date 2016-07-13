@@ -22,13 +22,12 @@ RUN apt-get update \
     && apt-get install -y unzip \
     && chmod +x ${TOMCAT_HOME}/bin/entrypoint.sh \
     && rm -rf ${TOMCAT_HOME}/webapps/* \
-    && mkdir ${TOMCAT_HOME}/webapps/ROOT \
-    && ln -sf ${TOMCAT_HOME}/webapps/ROOT /opt/application
+    && mkdir ${TOMCAT_HOME}/webapps/ROOT
 
 # If need debug, docker run with param "-e JAVA_OPTS='-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888'"
 # listen 8080, debug 8888
 EXPOSE 8080 8888
 
-VOLUME /opt/application
+VOLUME ${TOMCAT_HOME}/webapps/ROOT
 
 ENTRYPOINT ["/bin/sh", "-c", "${TOMCAT_HOME}/bin/entrypoint.sh"]
