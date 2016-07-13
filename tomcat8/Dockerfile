@@ -14,9 +14,12 @@ ENV TOMCAT_HOME=/opt/programs/apache-tomcat-8.0.35
 
 ADD ./resources/apache-tomcat-8.0.35.tar.gz /opt/programs/
 ADD ./resources/entrypoint.sh ${TOMCAT_HOME}/bin
+# Ubuntu apt source
+ADD ./resources/sources.list /etc/apt/
 
 # unzip tool for unpackage war file to ROOT application directory
-RUN apt-get install -y unzip \
+RUN apt-get update \
+    && apt-get install -y unzip \
     && chmod +x ${TOMCAT_HOME}/bin/entrypoint.sh \
     && rm -rf ${TOMCAT_HOME}/webapps/* \
     && mkdir ${TOMCAT_HOME}/webapps/ROOT \
