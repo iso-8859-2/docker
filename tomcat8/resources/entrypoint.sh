@@ -14,10 +14,8 @@ fi
 
 if [ -z "${JAVA_OPTS}" ]; then
 	echo "Environment variable 'JAVA_OPTS' not found, then use default."
-	JAVA_OPTS="-Xms256m -Xmx2048m"
+	JAVA_OPTS="-Xms256m -Xmx768m"
 fi
-
-JAVA_OPTS="${JAVA_OPTS} -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:+DisableExplicitGC -XX:-OmitStackTraceInFastThrow -Djava.net.preferIPv4Stack=true"
 
 echo "JAVA_HOME=${JAVA_HOME}"
 

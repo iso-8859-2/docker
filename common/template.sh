@@ -60,12 +60,6 @@ docker build --rm -t ${IMAGE_NAME}:${IMAGE_VERSION} .
 echo "[`date`] End build docker image : ${IMAGE_NAME}:${IMAGE_VERSION}."
 
 # docker images | grep "${IMAGE_NAME}"
-if [ -z "`docker images | grep "${IMAGE_NAME}" | grep "${IMAGE_VERSION}"`" ]; then
-    echo "[`date`] Failed to build docker image : ${IMAGE_NAME}:${IMAGE_VERSION}."
-    exit 1
-else
-    echo "[`date`] Build docker image : ${IMAGE_NAME}:${IMAGE_VERSION} success."
-fi
 
 if [ -z "${REGISTRY_URL}" ]; then
   REGISTRY_URL="registry.primeton.com"
