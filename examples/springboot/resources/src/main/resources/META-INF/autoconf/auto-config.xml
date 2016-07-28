@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group name="module1">
+        <property name="v11" defaultValue="Hello World" description="" />
+        <property name="v12" defaultValue="true" description="" />
+        <property name="v13" defaultValue="12345.67" description="" />
+    </group>
+    <group name="module2">
+        <property name="v21" defaultValue="你好，世界" description="" />
+        <property name="v22" defaultValue="true" description="" />
+        <property name="v23" defaultValue="12345.67" description="" />
+    </group>
+    <script>
+        <generate template="application.template" destfile="application.yml" />
+        <generate template="index.template" destfile="static/index.html" />
+        <generate template="index.template" destfile="static/html/index.html" />
+    </script>
+</config>

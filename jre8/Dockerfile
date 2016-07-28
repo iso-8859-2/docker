@@ -5,8 +5,8 @@
 # author: ZhongWen Li (mailto:lizw@primeton.com)
 #
 
-# FROM registry.primeton.com/ubuntu:16.04
-FROM ubuntu:16.04
+FROM euler-registry.primeton.com/ubuntu:16.04
+# FROM ubuntu:16.04
 
 MAINTAINER www.primeton.com, registry@primeton.com
 

@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+module1:
+  v1: "Hello World"
+  v2: true
+  v3: 12345.67
+
+module2:
+  v1: "你好，世界"
+  v2: false
+  v3: 1234567
