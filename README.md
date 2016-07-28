@@ -1,8 +1,8 @@
-# euler registry  
+# my private registry  
   
 `------------------------------------------------------------------------`  
-`Copyright (c) 2001-2016 Primeton Technologies, Ltd. All rights reserved.`  
+`Copyright (c) 1989-2016 ZhongWen Technologies, Ltd. All rights reserved.`  
   
 `Author:	ZhongWen (mailto:lizw@primeton.com)`  
-`Last update:	2016-07-26`  
+`Last update:	2015-08-28`  
 `------------------------------------------------------------------------`  
