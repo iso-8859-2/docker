@@ -47,7 +47,7 @@ public class AutoInjectMain {
 		// appEnv = "{'key1':'Hello 中国', 'key2':'你好啊', key3:true, 'key4':123.4}";
 		if (null == target || target.trim().isEmpty()) {
 			System.err.println(MessageFormat.format("[{0}] [ERROR] JVM environment variable ${1} is empty.",
-					new Date()), AUTO_INJECT_PATH);
+					new Date(), AUTO_INJECT_PATH));
 			return;
 		}
 		if (null == appEnv || appEnv.trim().isEmpty()) {
@@ -59,7 +59,7 @@ public class AutoInjectMain {
 		final Properties properties = toProperties(elements);
 		if (null == properties || properties.isEmpty()) {
 			System.err.println(MessageFormat.format("[{0}] [ERROR] OS environment variable ${1} is empty.",
-					new Date(). P_APP_ENV));
+					new Date(), P_APP_ENV));
 			return;
 		}
 		File targetPath = new File(target);
