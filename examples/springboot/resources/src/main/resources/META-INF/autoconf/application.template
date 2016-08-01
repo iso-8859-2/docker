@@ -1,5 +1,6 @@
 server:
   port: 8080
+  
 module1:
   v1: "${v11}"
   v2: ${v12}

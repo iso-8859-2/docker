@@ -19,10 +19,10 @@ RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 # ENV LANGUAGE=en_US.UTF-8
 
 ENV JAVA_VERSION=1.8.0_92
-ENV JAVA_HOME=/opt/programs/jdk${JAVA_VERSION}
+ENV JAVA_HOME=/jdk${JAVA_VERSION}
 ENV PATH=${PATH}:${JAVA_HOME}/bin
 
-ADD ./resources/jdk-8u92-linux-x64.tar.gz /opt/programs/
+ADD ./resources/jdk-8u92-linux-x64.tar.gz /
 
 RUN rm -f ${JAVA_HOME}/src.zip ${JAVA_HOME}/javafx-src.zip
 

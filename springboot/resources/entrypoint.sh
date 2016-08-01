@@ -94,7 +94,8 @@ if [ -z "${JAVA_HOME}" ] || [ ! -d ${JAVA_HOME} ]; then
 fi
 
 # start command
-CMD="${JAVA_HOME}/bin/java -server ${JAVA_OPTS} -jar ${RUNJAR}"
+# CMD="${JAVA_HOME}/bin/java -server ${JAVA_OPTS} -jar ${RUNJAR}"
+CMD="${JAVA_OPTS} -jar ${RUNJAR}"
 
 # spring-boot external-config reference documents
 # http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html
@@ -111,7 +112,8 @@ else
         CMD="${CMD} --spring.config.location=file://${CONF_FILE}"
     fi
 fi
-echo "[INFO ] CMD=${CMD}"
+echo "${JAVA_HOME}/bin/java ${CMD}"
  
 # execute start command
-${CMD}
+# ${JAVA_HOME}/bin/java ${CMD}
+java ${CMD}

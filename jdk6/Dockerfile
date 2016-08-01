@@ -13,10 +13,10 @@ MAINTAINER www.primeton.com, registry@primeton.com
 RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ENV JAVA_VERSION=1.6.0_45
-ENV JAVA_HOME=/opt/programs/jdk${JAVA_VERSION}
+ENV JAVA_HOME=/jdk${JAVA_VERSION}
 ENV PATH=${PATH}:${JAVA_HOME}/bin
 
-ADD ./resources/jdk${JAVA_VERSION}/ /opt/programs/jdk${JAVA_VERSION}/
+ADD ./resources/jdk${JAVA_VERSION}/ /jdk${JAVA_VERSION}/
 
 # RUN rm -f ${JAVA_HOME}/src.zip
 

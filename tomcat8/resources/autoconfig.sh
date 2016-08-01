@@ -24,13 +24,13 @@ auto_config() {
         return 0
     fi
 
-    if [ -z "${AUTO_INJECT_JAR}" ]; then
-        echo "[`date`] [ERROR] Environment variable 'AUTO_INJECT_JAR' not found."
+    if [ -z "${EULER_CI_TOOL}" ]; then
+        echo "[`date`] [ERROR] Environment variable 'EULER_CI_TOOL' not found."
         return 0
     fi
 
-    if [ ! -f "${AUTO_INJECT_JAR}" ]; then
-        echo "[`date`] [ERROR] JAR file ${AUTO_INJECT_JAR} not found."
+    if [ ! -f "${EULER_CI_TOOL}" ]; then
+        echo "[`date`] [ERROR] JAR file ${EULER_CI_TOOL} not found."
         return 0
     fi
 
@@ -53,13 +53,7 @@ auto_config() {
     fi
 
     # execute auto-config, to inject application configuration
-    if [ -z "${AUTO_INJECT_MAIN}" ]; then
-        # Use jar default main class
-        ${JAVA_HOME}/bin/java -server -Xms64m -Xmx512m -Dfile.encoding=utf-8 -DAUTO_INJECT_PATH="${AUTO_INJECT_PATH}" -jar ${AUTO_INJECT_JAR}
-    else
-        # Use custome main class
-        ${JAVA_HOME}/bin/java -server -Xms64m -Xmx512m -Dfile.encoding=utf-8 -DAUTO_INJECT_PATH="${AUTO_INJECT_PATH}" -cp ${AUTO_INJECT_JAR} ${AUTO_INJECT_MAIN}
-    fi
+    ${JAVA_HOME}/bin/java -server -Xms64m -Xmx512m -Dfile.encoding=utf-8 -DAUTO_INJECT_PATH="${AUTO_INJECT_PATH}" -jar ${EULER_CI_TOOL}
 
     # Marked as injected
     if [ ! -d "/etc/primeton" ]; then

@@ -12,21 +12,26 @@ FROM euler-registry.primeton.com/jdk6
 
 MAINTAINER www.primeton.com, registry@primeton.com
 
-ENV TOMCAT_HOME=/opt/programs/apache-tomcat-7.0.70
-ENV AUTO_INJECT_JAR=/opt/programs/auto-inject.jar
+ENV TOMCAT_VERSION=7.0.70
+ENV TOMCAT_HOME=/tomcat
+ENV APP_HOME=${TOMCAT_HOME}/webapps/ROOT
+ENV EULER_CI_TOOL=/usr/lib/euler-ci-tool.jar
+ENV SERVICE_PORT=8080
+ENV DEBUG_PORT=8888
 
-ADD ./resources/apache-tomcat-7.0.70.tar.gz /opt/programs/
-ADD ./resources/entrypoint.sh ${TOMCAT_HOME}/bin
+ADD ./resources/apache-tomcat-${TOMCAT_VERSION}.tar.gz /tmp/
+RUN mv -f /tmp/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME}
+
+ADD ./resources/entrypoint.sh ${TOMCAT_HOME}/bin/
 ADD ./resources/autoconfig.sh ${TOMCAT_HOME}/bin/
-ADD ./resources/auto-inject.jar /opt/programs/
+ADD ./resources/euler-ci-tool.jar ${EULER_CI_TOOL}
 # Ubuntu apt source
 ADD ./resources/sources.list /etc/apt/
 
 # unzip tool for unpackage war file to ROOT application directory
 RUN apt-get update \
     && apt-get install -y unzip \
-    && chmod +x ${TOMCAT_HOME}/bin/entrypoint.sh \
-    && chmod +x ${TOMCAT_HOME}/bin/autoconfig.sh \
+    && chmod +x ${TOMCAT_HOME}/bin/entrypoint.sh ${TOMCAT_HOME}/bin/autoconfig.sh \
     && rm -rf ${TOMCAT_HOME}/webapps/*
 
 # In your Dockerfile
@@ -35,8 +40,9 @@ RUN apt-get update \
 # ADD ./resources/app.war /tmp/ROOT.war
 # RUN unzip /tmp/ROOT.war -d ${TOMCAT_HOME}/webapps/ROOT/
 
-# If need debug, docker run with param "-e JAVA_OPTS='-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888'"
+# If need debug, docker run with param "-p 8888:8888 -e JAVA_OPTS='-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888'"
+# or "-p 8888:8888 -e USE_DEBUG_PORT=true"
 # listen 8080, debug 8888
-EXPOSE 8080 8888
+EXPOSE ${SERVICE_PORT} ${DEBUG_PORT}
 
 ENTRYPOINT ["/bin/sh", "-c", "${TOMCAT_HOME}/bin/entrypoint.sh"]

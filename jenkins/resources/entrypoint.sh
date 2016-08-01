@@ -7,8 +7,8 @@
 # author: ZhongWen Li (mailto:lizw@primeton.com)
 #
 
-if [ -z "${JENKINS_HOME}" ]; then
-    JENKINS_HOME=~/jenkins_home
+if [ -z "${JENKINS_WORK}" ]; then
+    JENKINS_WORK="/jenkins"
 fi
 
 if [ -z "${JAVA_OPTS}" ]; then
@@ -19,7 +19,7 @@ fi
 #
 # Common JVM settings
 #
-JAVA_OPTS="${JAVA_OPTS} -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=70"
+JAVA_OPTS="${JAVA_OPTS} -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=70"
 JAVA_OPTS="${JAVA_OPTS} -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled"
 JAVA_OPTS="${JAVA_OPTS} -XX:SurvivorRatio=8 -XX:+DisableExplicitGC -XX:-OmitStackTraceInFastThrow"
 JAVA_OPTS="${JAVA_OPTS} -Djava.net.preferIPv4Stack=true -Dfile.encoding=utf-8"
@@ -27,18 +27,24 @@ JAVA_OPTS="${JAVA_OPTS} -Djava.net.preferIPv4Stack=true -Dfile.encoding=utf-8"
 #
 # Jenkins workspace setting
 #
-JAVA_OPTS="${JAVA_OPTS} -DJENKINS_HOME=${JENKINS_HOME}"
+JAVA_OPTS="${JAVA_OPTS} -DJENKINS_HOME=${JENKINS_WORK}"
 
-JENKINS_WAR=${PROGRAMS_HOME}/jenkins/jenkins.war
-if [ ! -f ${JENKINS_WAR} ]; then
-    echo "${JENKINS_WAR} not found."
-    exit 0
+if [ ! -f ${JENKINS_HOME}/jenkins.war ]; then
+    echo "${JENKINS_HOME}/jenkins.war not found."
+    exit 1
 fi
 
-# run docker daemon
-nohup wrapdocker >> /dev/null &
+# run docker daemon process
+# nohup wrapdocker >> /dev/null &
+# nohup wrapdocker >> /dev/stdout &
 
-CMD="${JAVA_HOME}/bin/java -server ${JAVA_OPTS} -jar ${JENKINS_WAR}"
-echo ${CMD}
-${CMD}
+# if docker shutdown will auto start
+# nohup health.sh >> /dev/stdout &
+
+# systemctl enable docker.service
+service docker start
+
+echo "JAVA_OPTS=${JAVA_OPTS}"
+
+${JAVA_HOME}/bin/java ${JAVA_OPTS} -jar ${JENKINS_HOME}/jenkins.war
 

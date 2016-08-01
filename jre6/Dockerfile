@@ -13,9 +13,9 @@ MAINTAINER www.primeton.com, registry@primeton.com
 RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ENV JAVA_VERSION=1.6.0_45
-ENV JAVA_HOME=/opt/programs/jre${JAVA_VERSION}
+ENV JAVA_HOME=/jre${JAVA_VERSION}
 ENV PATH=${PATH}:${JAVA_HOME}/bin
 
-ADD ./resources/jre${JAVA_VERSION}/ /opt/programs/jre${JAVA_VERSION}/
+ADD ./resources/jre${JAVA_VERSION}/ /jre${JAVA_VERSION}/
 
 CMD ["/bin/bash"]

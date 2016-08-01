@@ -32,14 +32,24 @@ main() {
     fi
     # http://ftp.tsukuba.wide.ad.jp/software/jenkins/war/2.14/jenkins.war
     # http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.14/jenkins.war
-    if [ -f "${CONTEXT_PATH}/resources/${JENKINS_FILE}" ] ; then
-        rm -f ${CONTEXT_PATH}/resources/${JENKINS_FILE}
+    if [ ! -f "${CONTEXT_PATH}/resources/${JENKINS_FILE}" ] ; then
+        curl --fail --location --retry 3 \
+            http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/latest/jenkins.war \
+            -o ${CONTEXT_PATH}/resources/${JENKINS_FILE}
     fi
-    curl --fail --location --retry 3 \
-        http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/latest/jenkins.war \
-        -o ${CONTEXT_PATH}/resources/${JENKINS_FILE}
     if [ ! -f "${CONTEXT_PATH}/resources/${JENKINS_FILE}" ] ; then
         echo "[`date`] [ERROR] Failed to download jenkins.war."
+        exit 1
+    fi
+
+    # compile runnable jar auto-config.jar
+    /bin/bash ${CONTEXT_PATH}/plugins/euler-ci-tool/build.sh
+    # Copy resource file
+    CI_TOOL_JAR="${CONTEXT_PATH}/plugins/euler-ci-tool/target/euler-ci-tool.jar"
+    if [ -f "${CI_TOOL_JAR}" ]; then
+        cp -f ${CI_TOOL_JAR} ${CONTEXT_PATH}/resources/
+    else
+        echo "[`date`] [WARN ] ${CI_TOOL_JAR} not found."
         exit 1
     fi
 }

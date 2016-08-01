@@ -30,14 +30,14 @@ main() {
         echo "${CONTEXT_PATH}/resources/${TOMCAT_PKG} not found."
         exit 0
     fi
-    # compile runnable jar auto-inject.jar
-    /bin/bash ${CONTEXT_PATH}/../autoinject/build.sh
+    # compile runnable jar euler-ci-tool.jar
+    /bin/bash ${CONTEXT_PATH}/../jenkins/plugins/euler-ci-tool/build.sh
     # Copy resource file
-    AUTO_INJECT_JAR="${CONTEXT_PATH}/../autoinject/target/auto-inject.jar"
-    if [ -f "${AUTO_INJECT_JAR}" ]; then
-        cp -f ${AUTO_INJECT_JAR} ${CONTEXT_PATH}/resources/
+    CI_TOOL_JAR="${CONTEXT_PATH}/../jenkins/plugins/euler-ci-tool/target/euler-ci-tool.jar"
+    if [ -f "${CI_TOOL_JAR}" ]; then
+        cp -f ${CI_TOOL_JAR} ${CONTEXT_PATH}/resources/
     else
-        echo "[`date`] [WARN ] ${AUTO_INJECT_JAR} not found."
+        echo "[`date`] [WARN ] ${CI_TOOL_JAR} not found."
         exit 1
     fi
 }
