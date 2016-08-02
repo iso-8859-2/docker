@@ -27,7 +27,7 @@ TARGET_PATH=""
 if [ -d "${TOMCAT_HOME}/webapps/ROOT" ]; then
     TARGET_PATH="${TOMCAT_HOME}/webapps/ROOT"
 elif [ -f "${TOMCAT_HOME}/webapps/ROOT.war" ]; then
-    TARGET_PATH="${TOMCAT_HOME}/webapps/ROOT.war"
+    TARGET_PATH="${TOMCAT_HOME}/webapps"
 else
     TARGET_PATH="${TOMCAT_HOME}/webapps"
 fi

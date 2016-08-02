@@ -44,6 +44,7 @@ official() {
         gitlab/gitlab-ce
         httpd
         node
+        nats
     )
 
     VERSIONS=(
@@ -51,11 +52,12 @@ official() {
         16.04
         1.8
         5.7
-        3.2
+        3.2.1
         latest
         latest
         2.4
         6.3
+        0.8.1
     )
 
     LENGTH=${#IMAGES[@]}
@@ -110,6 +112,8 @@ common() {
         tomcat7j6
         tomcat7j8
         tomcat8
+        jetty8
+        jetty9
         springboot
         etcd
         etcd2
