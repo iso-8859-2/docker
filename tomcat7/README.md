@@ -28,9 +28,9 @@ Base on tomcat7 docker image to build your webapp image.
 `   && rm -f /tmp/ROOT.war`   
   
 ### Run example  
-`docker run -d -p 8080:8080 -v ~/myapp/app.war:/opt/programs/apache-tomcat-7.0.70/webapps/ROOT.war tomcat7:1.0.0`    
+`docker run -d -p 8080:8080 -v ~/myapp/app.war:/tomcat/webapps/ROOT.war tomcat7:1.0.0`
   
-`docker run -d -p 8080:8080 -v ~/myapp/app.war:/opt/programs/apache-tomcat-7.0.70/webapps/ROOT.war \`   
+`docker run -d -p 8080:8080 -v ~/myapp/app.war:/tomcat/webapps/ROOT.war \`
 `-e P_APP_ENV="{'key1':'value1', ..., 'keyn':'valuen'} -e JAVA_OPTS="..." tomcat7:1.0.0`  
   
 ## Environment  

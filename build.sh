@@ -35,7 +35,7 @@ fi
 
 PARAMS="--REGISTRY_URL ${REGISTRY_URL} --PUSH_IMG ${PUSH_IMG} --RM_IMG ${RM_IMG} --LATEST ${LATEST}"
 
-targets="etcd etcd2 etcd3 jre6 jdk6 jre7 jdk7 jre8 jdk8 jenkins tomcat6 tomcat7 tomcat7/jdk6 tomcat7/jdk8 tomcat8 springboot frontapp rds redis mysql/5.7 examples/tomcat6 examples/tomcat7 examples/tomcat8 examples/springboot"
+targets="etcd etcd2 etcd3 jre6 jdk6 jre7 jdk7 jre8 jdk8 jenkins jetty8 jetty9 tomcat6 tomcat7 tomcat7/jdk6 tomcat7/jdk8 tomcat8 springboot frontapp rds redis mysql/5.7 examples/tomcat6 examples/tomcat7 examples/tomcat8 examples/springboot"
 for target in ${targets} ; do
     /bin/bash ${CONTEXT_PATH}/${target}/build.sh ${PARAMS}
 done
