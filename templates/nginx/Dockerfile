@@ -7,7 +7,7 @@
 
 # https://hub.docker.com/_/nginx/
 
-FROM euler-registry.primeton.com/nginx:1.8
+FROM euler-registry.primeton.com/nginx:1.10
 # FROM euler-registry.primeton.com/nginx
 # FROM ${registry.url}/${image.name}:${image.version}
 # FROM ${registry.url}/${image.name}

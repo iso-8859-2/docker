@@ -37,10 +37,11 @@ FROM euler-registry.primeton.com/frontapp
 ADD . ${APP_HOME}
 
 # or
-ADD ./html/ ${APP_HOME}/html/
-ADD ./META-INF ${APP_HOME}/META-INF/
-ADD ./nginx/ ${APP_HOME}/nginx/
+# ADD ./html/ ${APP_HOME}/html/
+# ADD ./META-INF ${APP_HOME}/META-INF/
+# ADD ./nginx/ ${APP_HOME}/nginx/
 
+# or
 # ADD app.zip /tmp/
 # RUN unzip /tmp/app.zip -d ${APP_HOME}/ \
 #   && rm -f /tmp/app.zip

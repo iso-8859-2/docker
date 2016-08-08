@@ -22,7 +22,8 @@ ADD ./resources/entrypoint.sh /bin/
 ADD ./resources/autoconfig.sh /bin/
 ADD ./resources/euler-ci-tool.jar ${EULER_CI_TOOL}
 
-RUN chmod +x /bin/entrypoint.sh /bin/autoconfig.sh
+RUN chmod +x /bin/entrypoint.sh /bin/autoconfig.sh \
+    && cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ENTRYPOINT ["/bin/bash", "-c", "/bin/entrypoint.sh"]
 

@@ -38,6 +38,7 @@ official() {
         registry
         ubuntu
         nginx
+        nginx
         mysql
         redis
         sonatype/nexus3
@@ -51,6 +52,7 @@ official() {
         2
         16.04
         1.8
+        1.10
         5.7
         3.2.1
         latest

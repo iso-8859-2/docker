@@ -2,6 +2,8 @@
 # Copyright (c) 2001-2016 Primeton Technologies, Ltd.
 # All rights reserved.
 #
+# author: ZhongWen Li (mailto:lizw@primeton.com)
+#
 
 FROM euler-registry.primeton.com/springboot
 # FROM euler-registry.primeton.com/springboot:1.0.0

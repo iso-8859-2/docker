@@ -5,8 +5,9 @@
 # author: ZhongWen Li (mailto:lizw@primeton.com)
 #
 
-# FROM docker.io/redis:3.2.1
-# FROM euler-registry.primeton.com/redis:3.2.1
-FROM redis:3.2.1
+FROM euler-registry.primeton.com/jetty8
 
 MAINTAINER www.primeton.com, registry@primeton.com
+
+# If Dockerfile in WAR root directory
+ADD ./resources/war/ ${JETTY_HOME}/webapps/ROOT/

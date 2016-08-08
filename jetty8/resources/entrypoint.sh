@@ -8,8 +8,8 @@
 #
 
 if [ -z ${JETTY_HOME} ]; then
-	echo "Error, JETTY_HOME environment variable not found."
-	exit 0
+    echo "[`date`] [ERROR] JETTY_HOME environment variable not found."
+    exit 1
 fi
 
 #
@@ -37,7 +37,7 @@ if [ -x ${JETTY_HOME}/bin/autoconfig.sh ]; then
 elif [ -f ${JETTY_HOME}/bin/autoconfig.sh ]; then
     /bin/bash ${JETTY_HOME}/bin/autoconfig.sh ${TARGET_PATH}
 else
-    echo "[`date`] [WARN] ${JETTY_HOME}/bin/autoconfig.sh not found."
+    echo "[`date`] [WARN ] ${JETTY_HOME}/bin/autoconfig.sh not found."
 fi
 
 # if [ -z "${JAVA_OPTS}" ]; then

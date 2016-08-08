@@ -16,8 +16,8 @@ if [ -z "`which mvn`" ]; then
     exit 1
 fi
 
-echo "[`date`] [INFO ] Execute 'mvn clean assembly:assembly' to compile euler-ci-tool."
-mvn clean assembly:assembly -Dmaven.test.skip=true -Dfile.encoding=utf-8
+echo "[`date`] [INFO ] Execute 'mvn clean package' to compile euler-ci-tool."
+mvn clean package -Dmaven.test.skip=true -Dfile.encoding=utf-8
 
 RUN_JAR="${CONTEXT_PATH}/target/euler-ci-tool-1.0.0-jar-with-dependencies.jar"
 if [ -f ${RUN_JAR} ]; then

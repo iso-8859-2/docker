@@ -16,7 +16,7 @@ RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && cp -f /tmp/etcd-v3.0.1-linux-amd64/etcd* /usr/bin/ \
     && rm -rf /tmp/etcd-v3.0.1-linux-amd64
 
-EXPOSE 12379 12380
+EXPOSE 2379 2380 4001 7001
 
 VOLUME /data
 
@@ -24,4 +24,6 @@ VOLUME /data
 # RUN groupadd -r etcd && useradd -r -g etcd etcd
 # USER etcd
 
-CMD ["/usr/bin/etcd", "--data-dir", "/data"]
+ENTRYPOINT ["/usr/bin/etcd"]
+
+CMD ["--data-dir", "/data"]
